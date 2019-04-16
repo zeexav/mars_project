@@ -38,8 +38,10 @@
 
       </div>
         <div class = "col-md-5 ml-auto facts" > 
-          <h4 id = "weather">Current Weather on Mars</h4>
-           <p>{{mars_info.weather}}</p>
+          <div class = "card">
+            <h4 style = "margin-left: 5px;">Current Weather on Mars</h4>
+            <p style = "margin-left: 5px;">{{mars_info.weather}}</p>
+          </div>
           
           <h4>Mars Facts</h4>
 
@@ -63,23 +65,29 @@
     </div>
 
     <div class = "row">
-      <div>
+      
         
-          <table>
+        <div class = "col-md-4">
+            
+                {% for title, pic in mars_info.mars_hemispheres.items() %}
+
+                <ul class = "list-inline">
+                  <li style = "padding:20px;">
+                    <figure>
+                        <img src="{{pic}}" style = "width:350px;height:300px;padding-right:20px;" alt="Mars hemisphere"></img>
+                          <figcaption><h5>{{title}}</h5></figcaption>
+
+                    </figure>
                       
-              {% for title, pic in mars_info.mars_hemispheres.items() %}
-              
-                  <tr>
-                    <td style = " padding:20px;">
-                    <img style = "width:250px; height: 250px;" src = "{{pic}}"></img>
-                    <figcaption><h6>{{title}}</h6></figcaption>
-                   </td>
-                  </tr>              
-                
-              {% endfor %}
-
-          </table>
-
+                  </li>
+                </ul> 
+             
+               
+          </div>
+          {% endfor %} 
+          </div>
+        </div>
+      
       </div>
   </div>
 
