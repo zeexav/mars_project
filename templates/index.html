@@ -31,9 +31,10 @@
 
     <div class = "row">
       <div class = "col-md-7 mr-auto"  >
+        
           <figure>
             <figcaption><h3>Featured Mars Image</h3></figcaption>
-            <img src = "{{mars_info.featured_img}}" alt = "mars featured image"></img>
+            <img class = "img-fluid" src = "{{mars_info.featured_img}}" alt = "mars featured image"></img>
           </figure>
 
       </div>
@@ -45,7 +46,7 @@
           
           <h4>Mars Facts</h4>
 
-            <table style = "border: 2px">
+            <table class = "table table-bordered table-sm">
               <th>
                 <tr>
                   <td><strong>Fact</strong></td>
@@ -53,8 +54,13 @@
                 </tr>
               </th>
               <tbody> 
-                <!-- mars facts go here -->
-               
+                <tr>
+                    {% for fact, value in mars_info.mars_facts.items() %}
+                    
+                      <td>{{fact}} </td>
+                      <td>{{value}}</td>
+                </tr>
+                {% endfor %}
               </tbody>
             </table> 
 
@@ -66,25 +72,26 @@
 
     <div class = "row">
       
-        
-        <div class = "col-md-4">
+      {% for title, pic in mars_info.mars_hemispheres.items() %}
+        <div class = " col-md-5 mx-auto">
             
-                {% for title, pic in mars_info.mars_hemispheres.items() %}
+                
 
                 <ul class = "list-inline">
-                  <li style = "padding:20px;">
+                  <li style = "padding-top:10px;">
                     <figure>
-                        <img src="{{pic}}" style = "width:350px;height:300px;padding-right:20px;" alt="Mars hemisphere"></img>
+                        <img src="{{pic}}" style = "width:400px;height:400px;" alt="Mars hemisphere"></img>
                           <figcaption><h5>{{title}}</h5></figcaption>
 
                     </figure>
-                      
+                    
                   </li>
+                   
                 </ul> 
              
                
           </div>
-          {% endfor %} 
+          {% endfor %}
           </div>
         </div>
       
