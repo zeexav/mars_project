@@ -82,31 +82,26 @@ def scrape():
 
     #Mars Facts. use Pandas to scrape the table containing facts about the planet
 
-    # facts_site = 'https://space-facts.com/mars/'
-    # browser.visit(facts_site)
+        facts_site = 'https://space-facts.com/mars/'
+        browser.visit(facts_site)
 
-    # facts_site = browser.html
-    # soup = BeautifulSoup(facts_site, 'lxml')
+        facts_site = browser.html
+        soup = BeautifulSoup(facts_site, 'html')
 
-    # facts_table = soup.find_all('table')
+        profile = soup.find_all('article', id = "post-17")
 
-    # mars_facts = pd.read_html(str(facts_table))
+        fact_label = []
+        value = []
 
-    # #convert to dataframe and drop index
-    # mars_facts_df = mars_facts[0]
-    # mars_facts_df.columns = ['Fact', 'Values']
-
-    # mars_facts_df.set_index('Fact', drop = True, inplace = True)
-
-    # #convert new dataframe to dictionary
-
-    # mars_table_all = mars_facts_df.to_dict()
-
-    # for _, vals in mars_table_all.items():
-    #     mars_table = vals
-        #print(mars_table)
+        for sect in profile:
+            content = sect.find('div', class_ = "post-content")
+            facts = content.find('table', class_ = "tablepress tablepress-id-mars")
+            fact_label = [fact.text.replace("\n", "").replace(":","") for fact in facts.find_all('td', class_ = "column-1")]
+            value = [fact.text.replace("\n", "").replace(":","") for fact in facts.find_all('td', class_ = "column-2")]
     
+        mars_table = dict(zip(fact_label, value))
 
+        
 
     
     # ### Mars Hemispheres
@@ -164,6 +159,7 @@ def scrape():
     mars_dict = {"mars_headlines": news_titles,
                 "news_desc": news_p,
                 "featured_img": featured_img_url,
+                "mars_facts": mars_table,
                 "weather": weather,
                 "mars_hemispheres": hemisphere_img_urls
                      }
