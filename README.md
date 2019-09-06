@@ -1,6 +1,11 @@
 ##Mission to Mars - Web Scraping using BeautifulSoup
 
+
 ####Summary: Build a web application that scrapes various websites for data related to the Mission to Mars and displays the information in a single HTML page
+
+=======
+Summary:
+Build a web application that scrapes various websites for data related to the Mission to Mars and displays the information in a single HTML page.
 
 ####Prerequisites:
 
