@@ -1,8 +1,8 @@
-Mission to Mars - Web Scraping using BeautifulSoup
+##Mission to Mars - Web Scraping using BeautifulSoup
 
-Summary: Build a web application that scrapes various websites for data related to the Mission to Mars and displays the information in a single HTML page
+####Summary: Build a web application that scrapes various websites for data related to the Mission to Mars and displays the information in a single HTML page
 
-Prerequisites:
+####Prerequisites:
 
 Pandas
 Flask
@@ -11,7 +11,7 @@ BeautifulSoup
 Requests/Splinter
 chromedriver
 
-Methodology
+####Methodology
 
 Two Python scripts were created - mission_to_mars.py which contains the scrape function and app.py to run the Flask app.
 
